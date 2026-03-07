@@ -18,7 +18,7 @@ namespace BethanysPieShopHRM.Components.Pages
 
         private void ChangeHolidayState()
         {
-            Employee.OnHoliday = !Employee.OnHoliday;
+            Employee.IsOnHoliday = !Employee.IsOnHoliday;
         }
     }
 }
