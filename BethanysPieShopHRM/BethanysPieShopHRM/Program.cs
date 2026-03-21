@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 var app = builder.Build();
 
+// Seed the in-memory database with initial data
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
