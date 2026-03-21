@@ -13,6 +13,18 @@ builder.Services.AddDbContext<AppDbContext>(
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    if (!dbContext.Employees.Any())
+    {
+        // seed Countries, JobCategories, Employees
+        dbContext.SaveChanges();
+    }
+}
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
