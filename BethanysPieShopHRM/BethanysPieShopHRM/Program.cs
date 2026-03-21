@@ -50,6 +50,7 @@ using (var scope = app.Services.CreateScope())
             {
                 EmployeeId = 1,
                 CountryId = 1, // Belgium
+                Country = dbContext.Countries.FirstOrDefault(c => c.CountryId == 1),
                 MaritalStatus = MaritalStatus.Single,
                 BirthDate = new DateTime(1979, 1, 16),
                 City = "Brussels",
@@ -72,6 +73,7 @@ using (var scope = app.Services.CreateScope())
             {
                 EmployeeId = 2,
                 CountryId = 2, // Germany
+                Country = dbContext.Countries.FirstOrDefault(c => c.CountryId == 2),
                 MaritalStatus = MaritalStatus.Married,
                 BirthDate = new DateTime(1985, 6, 12),
                 City = "Berlin",
@@ -94,6 +96,7 @@ using (var scope = app.Services.CreateScope())
             {
                 EmployeeId = 3,
                 CountryId = 3, // Netherlands
+                Country = dbContext.Countries.FirstOrDefault(c => c.CountryId == 3),
                 MaritalStatus = MaritalStatus.Single,
                 BirthDate = new DateTime(1992, 3, 8),
                 City = "Amsterdam",
@@ -116,6 +119,7 @@ using (var scope = app.Services.CreateScope())
             {
                 EmployeeId = 4,
                 CountryId = 4, // USA
+                Country = dbContext.Countries.FirstOrDefault(c => c.CountryId == 4),
                 MaritalStatus = MaritalStatus.Married,
                 BirthDate = new DateTime(1980, 11, 30),
                 City = "New York",
@@ -138,6 +142,7 @@ using (var scope = app.Services.CreateScope())
             {
                 EmployeeId = 5,
                 CountryId = 8, // France
+                Country = dbContext.Countries.FirstOrDefault(c => c.CountryId == 8),
                 MaritalStatus = MaritalStatus.Single,
                 BirthDate = new DateTime(1995, 9, 14),
                 City = "Paris",
