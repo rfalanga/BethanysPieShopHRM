@@ -1,10 +1,15 @@
 using BethanysPieShopHRM.Components;
+using BethanysPieShopHRM.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<AppDbContext>(
+    options => options.UseInMemoryDatabase("BethanysPieShopDb"));
 
 var app = builder.Build();
 
