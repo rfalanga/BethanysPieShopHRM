@@ -19,7 +19,7 @@ namespace BethanysPieShopHRM.Components.Pages
         protected override async Task OnInitializedAsync()
         {
             Employee = await AppDbContext.Employees
-                .Include(e => e.Country)
+                .Include(e => e.Country) // Put this in so the country name is available when the employee details are shown
                 .FirstOrDefaultAsync(e => e.EmployeeId == EmployeeId) ?? new Employee();
         }
 

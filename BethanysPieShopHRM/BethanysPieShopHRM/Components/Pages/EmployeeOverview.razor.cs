@@ -12,9 +12,16 @@ namespace BethanysPieShopHRM.Components.Pages
         [Inject]
         public AppDbContext AppDbContext { get; set; }
 
+        // Gill pointed out that instead of using the Inject above, we could have used constructor injection like this:
+        //public EmployeeOverview(AppDbContext appDbContext)
+        //{
+        //    AppDbContext = appDbContext;
+        //}
+        // However, I'll leave the inject in place.
+
         protected override void OnInitialized()
         {
-            Employees = AppDbContext.Employees.ToList();
+            Employees = AppDbContext.Employees.ToList(); // This is how Gill did it
         }
     }
 }
