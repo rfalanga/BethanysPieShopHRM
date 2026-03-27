@@ -1,5 +1,7 @@
-﻿using BethanysPieShopHRM.Services;
+﻿using BethanysPieShopHRM.Data;
+using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
+using Microsoft.AspNetCore.Components;
 
 namespace BethanysPieShopHRM.Components.Pages
 {
@@ -7,10 +9,12 @@ namespace BethanysPieShopHRM.Components.Pages
     {
         public List<Employee> Employees { get; set; } = default!;
 
-        protected async override Task OnInitializedAsync()
+        [Inject]
+        public AppDbContext AppDbContext { get; set; }
+
+        protected override void OnInitialized()
         {
-            await Task.Delay(2000);
-            Employees = MockDataService.Employees ?? new List<Employee>();
+            Employees = AppDbContext.Employees.ToList();
         }
     }
 }
