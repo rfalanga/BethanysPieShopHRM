@@ -2,6 +2,7 @@
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 
 namespace BethanysPieShopHRM.Components.Pages
 {
@@ -11,13 +12,15 @@ namespace BethanysPieShopHRM.Components.Pages
         public int EmployeeId { get; set; }
 
         [Inject]
-        public AppDbContext AppDbContext { get; set; }  
+        public AppDbContext AppDbContext { get; set; } = default!;
 
         public Employee Employee { get; set; } = new Employee();
 
-        protected async override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Employee = AppDbContext.Employees.Where(e => e.EmployeeId == EmployeeId).FirstOrDefault() ?? new Employee();
+            Employee = await AppDbContext.Employees
+                .Include(e => e.Country)
+                .FirstOrDefaultAsync(e => e.EmployeeId == EmployeeId) ?? new Employee();
         }
 
         private void ChangeHolidayState()
