@@ -14,7 +14,7 @@ namespace BethanysPieShopHRM.Components.Pages
 
         protected override void OnInitialized()
         {
-            Employees = AppDbContext.Employees.ToList();
+            Employees = AppDbContext.Employees.ToList(); // This is how Gill did it
         }
     }
 }
