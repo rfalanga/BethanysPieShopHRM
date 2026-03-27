@@ -16,6 +16,7 @@ namespace BethanysPieShopHRM.Components.Pages
 
         public Employee Employee { get; set; } = new Employee();
 
+        // I got rid of the child branch too quickly, so I'm putting this comment in to create a new branch.
         protected override async Task OnInitializedAsync()
         {
             Employee = await AppDbContext.Employees
