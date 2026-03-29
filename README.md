@@ -1,5 +1,7 @@
 # BethanysPieShowHRM
 
+[![Build BethanysPieShopHRM](https://github.com/rfalanga/BethanysPieShopHRM/actions/workflows/dotnet.yml/badge.svg)](https://github.com/rfalanga/BethanysPieShopHRM/actions/workflows/dotnet.yml)
+
 Following Gill Cleeren in his Pluralsight course "ASP.NET Core 10 Blazor Foundations"
 
 ## .NET 10
