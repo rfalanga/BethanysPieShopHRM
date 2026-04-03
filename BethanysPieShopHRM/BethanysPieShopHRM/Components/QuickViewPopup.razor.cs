@@ -16,7 +16,6 @@ namespace BethanysPieShopHRM.Components
             _employee = Employee;
         }
 
-        // This method was in Gill's Assets.txt file
         public void Close()
         {
             _employee = null;
