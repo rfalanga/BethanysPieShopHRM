@@ -16,7 +16,7 @@ namespace BethanysPieShopHRM.Components
             if (Employee.FirstName == "Bethany")
             {
                 // Gill is doing this to illustrate adding an error boundary
-                throw new Exception("Error with first name");
+                // throw new Exception("Error with first name");    // Leaving this in, but commented out, so I understand how to use the error boundary component. 
             }
         }
     }
