@@ -12,6 +12,8 @@ namespace BethanysPieShopHRM.Components.Pages
         [Inject]
         public AppDbContext AppDbContext { get; set; }
 
+        private string Title = "Employee Overview";
+
         // Gill pointed out that instead of using the Inject above, we could have used constructor injection like this:
         //public EmployeeOverview(AppDbContext appDbContext)
         //{
@@ -19,9 +21,16 @@ namespace BethanysPieShopHRM.Components.Pages
         //}
         // However, I'll leave the inject in place.
 
+        private Employee? _selectedEmployee;
+
         protected override void OnInitialized()
         {
             Employees = AppDbContext.Employees.ToList(); // This is how Gill did it
+        }
+
+        public void ShowQuickViewPopup(Employee selectedEmployee)
+        {
+            _selectedEmployee = selectedEmployee;
         }
     }
 }

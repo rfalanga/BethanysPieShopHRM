@@ -1,5 +1,9 @@
 ﻿@page "/employeeoverview"
-@attribute [StreamRendering(true)]
+@* @attribute [StreamRendering(true)] *@
+
+@rendermode InteractiveServer
+
+<PageTitle>@Title</PageTitle>
 
 <h1>Employee Overview</h1>
 
@@ -9,31 +13,21 @@
 }
 else
 {
-    <table class="table table-light">
-        <thead class="table-primary">
-            <tr>
-                <th></th>
-                <th>Employee ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var employee in Employees)
-            {
-                <tr>
-                    <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}-small.jpg")" class="rounded-circle" alt="Employee Photo" /></td>
-                    <td>@employee.EmployeeId</td>
-                    <td>@employee.FirstName</td>
-                    <td>@employee.LastName</td>
-                    <td>
-                        <a href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-outline-primary btn-sm mb-1">
-                            Details
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <QuickViewPopup Employee="_selectedEmployee" />
+
+    <div class="row">
+        @foreach (var employee in Employees)
+        {
+            <div class="col-6 col-lg-4 col-xl-3 col-xxl-3">
+                <ErrorBoundary>
+                    <ChildContent>
+                        <EmployeeCard Employee="employee" EmployeeQuickViewClicked="ShowQuickViewPopup" />
+                    </ChildContent>
+                    <ErrorContent>
+                        <p class="errorUI">Invalid employee!</p>
+                    </ErrorContent>
+                </ErrorBoundary>
+            </div>
+        }
+    </div>
 }
