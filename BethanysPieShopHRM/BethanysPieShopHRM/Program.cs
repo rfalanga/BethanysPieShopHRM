@@ -10,7 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddDbContext<AppDbContext>(
-    options => options.UseInMemoryDatabase("BethanysPieShopDb"));
+    options => options.UseSqlite(builder.Configuration.GetConnectionString("PieShopDb.sqlite")));
 
 var app = builder.Build();
 
