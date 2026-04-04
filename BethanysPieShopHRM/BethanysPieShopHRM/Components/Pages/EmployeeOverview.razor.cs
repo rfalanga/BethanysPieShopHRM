@@ -12,6 +12,8 @@ namespace BethanysPieShopHRM.Components.Pages
         [Inject]
         public AppDbContext AppDbContext { get; set; }
 
+        private string Title = "Employee Overview";
+
         // Gill pointed out that instead of using the Inject above, we could have used constructor injection like this:
         //public EmployeeOverview(AppDbContext appDbContext)
         //{
