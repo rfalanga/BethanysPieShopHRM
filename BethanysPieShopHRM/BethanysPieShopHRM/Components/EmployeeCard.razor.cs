@@ -10,5 +10,14 @@ namespace BethanysPieShopHRM.Components
 
         [Parameter]
         public EventCallback<Employee> EmployeeQuickViewClicked { get; set; }
+
+        protected override void OnInitialized()
+        {
+            if (Employee.FirstName == "Bethany")
+            {
+                // Gill is doing this to illustrate adding an error boundary
+                throw new Exception("Error with first name");
+            }
+        }
     }
 }
