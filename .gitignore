@@ -416,6 +416,11 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.db-shm
-/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.db-wal
-/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.db
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
