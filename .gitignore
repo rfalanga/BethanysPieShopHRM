@@ -416,3 +416,5 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.db-shm
+/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.db-wal
