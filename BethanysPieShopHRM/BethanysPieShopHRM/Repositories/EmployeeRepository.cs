@@ -24,7 +24,7 @@ namespace BethanysPieShopHRM.Repositories
             return await appDbContext.Employees.ToListAsync();
         }
 
-        public async Task<Employee> GetEmployeeByIdAsync(int employeeId)
+        public async Task<Employee> GetEmployeeDetailsByIdAsync(int employeeId)
         {
             return await appDbContext.Employees.FirstOrDefaultAsync(c => c.EmployeeId == employeeId);
         }
