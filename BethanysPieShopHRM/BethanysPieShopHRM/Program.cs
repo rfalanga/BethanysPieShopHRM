@@ -5,6 +5,7 @@ using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Repositories;
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
+using BethanysPieShopHRM.State;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,8 @@ builder.Services.AddDbContextFactory<AppDbContext>(
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();  // Register the EmployeeRepository as a scoped service, this step I tend to forget
 builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>(); // Register the EmployeeDataService as a scoped service, this step I tend to forget
+
+builder.Services.AddScoped<ApplicationState>(); // Register the ApplicationState as a scoped service
 
 var app = builder.Build();
 
