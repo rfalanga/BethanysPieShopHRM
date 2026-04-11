@@ -1,7 +1,9 @@
 using BethanysPieShopHRM.Components;
 using BethanysPieShopHRM.Contracts.Repositories;
+using BethanysPieShopHRM.Contracts.Services;
 using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Repositories;
+using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +17,7 @@ builder.Services.AddDbContextFactory<AppDbContext>(
     options => options.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();  // Register the EmployeeRepository as a scoped service, this step I tend to forget
+builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>(); // Register the EmployeeDataService as a scoped service, this step I tend to forget
 
 var app = builder.Build();
 
