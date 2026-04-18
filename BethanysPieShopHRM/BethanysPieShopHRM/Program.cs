@@ -22,6 +22,10 @@ builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>(); // Regi
 
 builder.Services.AddScoped<ApplicationState>(); // Register the ApplicationState as a scoped service
 
+builder.Services.AddScoped<ITimeRegistrationRepository, TimeRegistrationRepository>();  // Register the TimeRegistrationRepository as a scoped service
+
+builder.Services.AddScoped<ITimeRegistrationDataService, TimeRegistrationDataService>(); // Register the TimeRegistrationDataService as a scoped service
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
