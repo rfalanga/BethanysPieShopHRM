@@ -13,6 +13,7 @@ namespace BethanysPieShopHRM.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
+        public DbSet<TimeRegistration> TimeRegistrations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
