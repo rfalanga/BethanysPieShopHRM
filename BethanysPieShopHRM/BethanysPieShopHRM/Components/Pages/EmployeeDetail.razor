@@ -150,5 +150,36 @@
 		</div>
 	</div>
 
+	@if (TimeRegistrations.Count == 0)
+	{
+		<p><em>Loading time registrations...</em></p>
+	}
+	else
+	{
+		<div class="virtualized">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Start time</th>
+						<th>End time</th>
+						<th>Task</th>
+                    </tr>
+                </thead>
+				<tbody>
+					@foreach (var timeRegistration in TimeRegistrations)
+					{
+						<tr>
+							<td>@timeRegistration.TimeRegistrationId</td>
+							<td>@timeRegistration.StartTime.ToString("g")</td>
+							<td>@timeRegistration.EndTime.ToString("g")</td>
+							<td>@timeRegistration.PerformedTaskDescription</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	}
+
 
 </section>

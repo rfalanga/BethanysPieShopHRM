@@ -1,8 +1,8 @@
-﻿using BethanysPieShopHRM.Data;
+﻿using BethanysPieShopHRM.Contracts.Services;
+using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
-using Microsoft.EntityFrameworkCore;
 
 namespace BethanysPieShopHRM.Components.Pages
 {
@@ -11,16 +11,20 @@ namespace BethanysPieShopHRM.Components.Pages
         [Parameter]
         public int EmployeeId { get; set; }
 
-        [Inject]
-        public AppDbContext AppDbContext { get; set; } = default!;
-
         public Employee Employee { get; set; } = new Employee();
+
+        [Inject]
+        public IEmployeeDataService? EmployeeDataService { get; set; }
+
+        [Inject]
+        public ITimeRegistrationDataService? TimeRegistrationDataService { get; set; }
+
+        public List<TimeRegistration> TimeRegistrations { get; set; } = [];
 
         protected override async Task OnInitializedAsync()
         {
-            Employee = await AppDbContext.Employees
-                .Include(e => e.Country) // Put this in so the country name is available when the employee details are shown
-                .FirstOrDefaultAsync(e => e.EmployeeId == EmployeeId) ?? new Employee();
+            Employee = await EmployeeDataService.GetEmployeeDetailsByIdAsync(EmployeeId);
+            TimeRegistrations = await TimeRegistrationDataService.GetTimeRegistrationsForEmployeeAsync(EmployeeId);
         }
 
         private void ChangeHolidayState()
