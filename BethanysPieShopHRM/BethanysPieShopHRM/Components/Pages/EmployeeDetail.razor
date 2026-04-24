@@ -168,15 +168,14 @@
                     </tr>
                 </thead>
 				<tbody>
-					@foreach (var timeRegistration in TimeRegistrations)
-					{
+					<Virtualize Items="@TimeRegistrations" Context="timeRegistration">
 						<tr>
 							<td>@timeRegistration.TimeRegistrationId</td>
 							<td>@timeRegistration.StartTime.ToString("g")</td>
 							<td>@timeRegistration.EndTime.ToString("g")</td>
 							<td>@timeRegistration.PerformedTaskDescription</td>
-						</tr>
-					}
+                        </tr>
+					</Virtualize>
 				</tbody>
 			</table>
 		</div>
