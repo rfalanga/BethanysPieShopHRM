@@ -21,7 +21,7 @@ namespace BethanysPieShopHRM.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _dbContextFactory?.Dispose();
         }
     }
 }
