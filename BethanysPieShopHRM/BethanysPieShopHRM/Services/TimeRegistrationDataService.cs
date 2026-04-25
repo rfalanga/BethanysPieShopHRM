@@ -23,7 +23,7 @@ namespace BethanysPieShopHRM.Services
             return await _timeRegistrationRepository.GetPagedTimeRegistrationsForEmployeeAsync(employeeId, pageSize, start);
         }
 
-        public async Task<int> GetTimeRegistrationCountForEmployeeIdAsync(int employeeId)   // This method wasn't at the beginning
+        public async Task<int> GetTimeRegistrationCountForEmployeeIdAsync(int employeeId)
         {
             return await _timeRegistrationRepository.GetTimeRegistrationCountForEmployeeIdAsync(employeeId);
         }
