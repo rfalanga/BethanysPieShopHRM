@@ -20,14 +20,20 @@ namespace BethanysPieShopHRM.Components.Pages
         [Inject]
         public ITimeRegistrationDataService? TimeRegistrationDataService { get; set; }
 
+        protected IQueryable<TimeRegistration>? itemsQueryable { get; set; } 
+
         public List<TimeRegistration> TimeRegistrations { get; set; } = [];
 
         private float itemHeight = 50;
+
+        protected int queryableCount = 0;
 
         protected override async Task OnInitializedAsync()
         {
             Employee = await EmployeeDataService.GetEmployeeDetailsByIdAsync(EmployeeId);
             TimeRegistrations = await TimeRegistrationDataService.GetTimeRegistrationsForEmployeeAsync(EmployeeId);
+            itemsQueryable = (await TimeRegistrationDataService.GetTimeRegistrationsForEmployeeAsync(EmployeeId)).AsQueryable();
+            queryableCount = itemsQueryable.Count();
         }
 
         private void ChangeHolidayState()
