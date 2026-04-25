@@ -33,13 +33,13 @@ namespace BethanysPieShopHRM.Components.Pages
             Employee.IsOnHoliday = !Employee.IsOnHoliday;
         }
 
-        public async ValueTask<ItemsProviderRequest<TimeRegistration>> LoadTimeRegistrations(ItemsProviderRequest itemsProviderRequest)
+        public async ValueTask<ItemsProviderResult<TimeRegistration>> LoadTimeRegistrations(ItemsProviderRequest itemsProviderRequest)
         { 
-            int totalNumberOfTimeRegistrations = await TimeRegistrationDataService.GetTimeRegistrationCountForEmployeeIdAsync(EmployeeId);
+            int totalNumberOfTimeRegistrations = await TimeRegistrationDataService.GetTimeRegistrationCountForEmployeeAsync(EmployeeId);
 
             var numberOfTimeRegistrations = Math.Min(itemsProviderRequest.Count, totalNumberOfTimeRegistrations - itemsProviderRequest.StartIndex);
 
-            var listItems = await TimeRegistrationDataService.GetTimeRegistrationsForEmployeeIdAsync(EmployeeId, itemsProviderRequest.StartIndex, numberOfTimeRegistrations);
+            var listItems = await TimeRegistrationDataService.GetPageTimeRegistrationsForEmployeeIdAsync(EmployeeId, itemsProviderRequest.StartIndex, numberOfTimeRegistrations);
             
             return new ItemsProviderResult<TimeRegistration>(listItems, totalNumberOfTimeRegistrations);
         }
