@@ -22,6 +22,8 @@ namespace BethanysPieShopHRM.Components.Pages
 
         public List<TimeRegistration> TimeRegistrations { get; set; } = [];
 
+        private float itemHeight = 50;
+
         protected override async Task OnInitializedAsync()
         {
             Employee = await EmployeeDataService.GetEmployeeDetailsByIdAsync(EmployeeId);
