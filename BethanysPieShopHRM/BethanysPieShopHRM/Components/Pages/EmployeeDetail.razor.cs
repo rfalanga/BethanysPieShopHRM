@@ -18,9 +18,9 @@ namespace BethanysPieShopHRM.Components.Pages
         public IEmployeeDataService? EmployeeDataService { get; set; }
 
         [Inject]
-        public ITimeRegistrationDataService? TimeRegistrationDataService { get; set; }  // This method wasn't at the beginning
+        public ITimeRegistrationDataService? TimeRegistrationDataService { get; set; }
 
-        public List<TimeRegistration> TimeRegistrations { get; set; } = []; // This method wasn't at the beginning
+        public List<TimeRegistration> TimeRegistrations { get; set; } = [];
 
         protected override async Task OnInitializedAsync()
         {
