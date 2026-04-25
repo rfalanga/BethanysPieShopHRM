@@ -23,5 +23,19 @@ namespace BethanysPieShopHRM.Repositories
         {
             _dbContextFactory?.Dispose();
         }
+
+        public async Task<List<TimeRegistration>> GetPagedTimeRegistrationsForEmployeeAsync(int employeeId, int pageSize, int start)
+        {
+            return await _dbContextFactory.TimeRegistrations
+                .Where(testc => testc.EmployeeId == employeeId)
+                .OrderBy(tr => tr.StartTime)
+                .Skip(start)
+                .Take(pageSize).ToListAsync();
+        }
+
+        public async Task<int> GetTimeRegistrationCountForEmployeeIdAsync(int employeeId)
+        {
+            return await _dbContextFactory.TimeRegistrations.Where(testc => testc.EmployeeId == employeeId).CountAsync();
+        }
     }
 }
