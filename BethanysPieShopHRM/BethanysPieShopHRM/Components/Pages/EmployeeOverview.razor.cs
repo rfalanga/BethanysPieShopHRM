@@ -1,4 +1,5 @@
-﻿using BethanysPieShopHRM.Data;
+﻿using BethanysPieShopHRM.Contracts.Services;
+using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
@@ -10,22 +11,15 @@ namespace BethanysPieShopHRM.Components.Pages
         public List<Employee> Employees { get; set; } = default!;
 
         [Inject]
-        public AppDbContext AppDbContext { get; set; }
+        public IEmployeeDataService EmployeeDataService { get; set; }
 
         private string Title = "Employee Overview";
 
-        // Gill pointed out that instead of using the Inject above, we could have used constructor injection like this:
-        //public EmployeeOverview(AppDbContext appDbContext)
-        //{
-        //    AppDbContext = appDbContext;
-        //}
-        // However, I'll leave the inject in place.
-
         private Employee? _selectedEmployee;
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Employees = AppDbContext.Employees.ToList(); // This is how Gill did it
+            Employees = (await EmployeeDataService.GetAllEmployeesAsync()).ToList();
         }
 
         public void ShowQuickViewPopup(Employee selectedEmployee)
