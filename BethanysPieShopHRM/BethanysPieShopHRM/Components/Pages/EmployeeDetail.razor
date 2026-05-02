@@ -1,5 +1,5 @@
 ﻿@page "/employeedetail/{EmployeeId:int}"
-
+@using Microsoft.AspNetCore.Components.QuickGrid
 @rendermode InteractiveServer
 
 <section class="employee-detail">
@@ -151,46 +151,18 @@
     </div>
 
     <h2>Time registrations</h2>
-    @if (TimeRegistrations.Count == 0)
+
+    @if (queryableCount > 0)
     {
-        <p><em>Loading time registrations...</em></p>
+        <QuickGrid Items="@itemsQueryable" PageSize="5">
+            <PropertyColumn Title="Date" Property="@(x => x.Date)" FormatString="{0:d}" />
+            <PropertyColumn Title="Hours" Property="@(x => x.Hours)" />
+            <PropertyColumn Title="Description" Property="@(x => x.Description)" />
+        </QuickGrid>
     }
     else
     {
-        <div class="virtualized">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Start time</th>
-                        <th>End time</th>
-                        <th>Task</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Note: the Context="timeRegistration" below was put there by GitHub Copilot. Without that, VS 2026 was complain. -->
-                    <Virtualize ItemsProvider="LoadTimeRegistrations" ItemSize="itemHeight" Context="timeRegistration">
-                        <ItemContent>
-                            <tr>
-                                <td>@timeRegistration.TimeRegistrationId</td>
-                                <td>@timeRegistration.StartTime.ToString("g")</td>
-                                <td>@timeRegistration.EndTime.ToString("g")</td>
-                                <td>@timeRegistration.PerformedTaskDescription</td>
-                            </tr>
-                        </ItemContent>
-                        <Placeholder>
-                            <tr>
-                                <td>Loading ...</td>
-                                <td>Loading ...</td>
-                                <td>Loading ...</td>
-                                <td>Loading ...</td>
-                            </tr>
-                        </Placeholder>
-                    </Virtualize>
-                </tbody>
-            </table>
-        </div>
+        <p>No time registrations found for this employee.</p>
     }
-
 
 </section>
