@@ -154,10 +154,12 @@
 
     @if (queryableCount > 0)
     {
-        <QuickGrid Items="@itemsQueryable" PageSize="5">
-            <PropertyColumn Title="Date" Property="@(x => x.Date)" FormatString="{0:d}" />
-            <PropertyColumn Title="Hours" Property="@(x => x.Hours)" />
-            <PropertyColumn Title="Description" Property="@(x => x.Description)" />
+        <QuickGrid Items="@itemsQueryable" Pagination="@pagination">
+            <PropertyColumn Title="ID" Property="@(x => x.TimeRegistrationId)" IsDefaultSortColumn="true" Sortable="true" />
+            <PropertyColumn Title="Start time" Property="@(x => x.StartTime)" Sortable="true" />
+            <PropertyColumn Title="End time" Property="@(x => x.EndTime)" Sortable="true" />
+            <PropertyColumn Title="Task" Property="@(x => x.PerformedTaskDescription)" Align="Align.Left" />
+            <Paginator State="@pagination" />
         </QuickGrid>
     }
     else

@@ -3,6 +3,7 @@ using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace BethanysPieShopHRM.Components.Pages
@@ -27,6 +28,8 @@ namespace BethanysPieShopHRM.Components.Pages
         private float itemHeight = 50;
 
         protected int queryableCount = 0;
+
+        public PaginationState pagination = new() { ItemsPerPage = 10 };
 
         protected override async Task OnInitializedAsync()
         {
