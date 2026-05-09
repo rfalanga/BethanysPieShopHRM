@@ -23,7 +23,7 @@ namespace BethanysPieShopHRM.Repositories
 
         public async Task DeleteEmployeeAsync(int employeeId)
         {
-            var employeeToDelete = await appDbContext.Employees.FirstOrDefault(e => e.EmployeeId == employeeId);
+            var employeeToDelete = await appDbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
             if (employeeToDelete == null) return;
 
             appDbContext.Employees.Remove(employeeToDelete);
