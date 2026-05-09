@@ -12,6 +12,9 @@ namespace BethanysPieShopHRM.Components.Pages
         [Inject]
         public IEmployeeDataService? EmployeeDataService { get; set; }
 
+        protected string Message { get; set; } = string.Empty;
+        protected bool IsSaved { get; set; } = false;
+
         protected override void OnInitialized()
         {
             Employee ??= new();
@@ -22,6 +25,9 @@ namespace BethanysPieShopHRM.Components.Pages
             if (EmployeeDataService != null)
             {
                 _ = await EmployeeDataService.AddEmployeeAsync(Employee);
+
+                IsSaved = true;
+                Message = $"Employee {Employee.FirstName} {Employee.LastName} was added successfully.";
             }
         }
     }
