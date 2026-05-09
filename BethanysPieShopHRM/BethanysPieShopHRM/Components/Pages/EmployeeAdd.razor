@@ -4,7 +4,11 @@
 
 @if (!IsSaved)
 {
-    <EditForm Model="Employee" OnSubmit="OnSubmit" Enhance FormName="AddEmployeeForm">
+    <EditForm Model="Employee" Enhance 
+        OnValidSubmit="@HandleValidSubmit"
+        OnInvalidSubmit="@HandleInvalidSubmit"
+        FormName="AddEmployeeForm"
+        method="post">
         <div class="row mb-3">
             <label for="lastName" class="col-form-label col-md-3">Last Name: </label>
             <div class="col-md-8">
