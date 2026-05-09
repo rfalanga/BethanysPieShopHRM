@@ -16,5 +16,13 @@ namespace BethanysPieShopHRM.Components.Pages
         {
             Employee ??= new();
         }
+
+        private async Task OnSubmit()
+        {
+            if (EmployeeDataService != null)
+            {
+                _ = await EmployeeDataService.AddEmployeeAsync(Employee);
+            }
+        }
     }
 }

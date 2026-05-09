@@ -55,8 +55,10 @@ namespace BethanysPieShopHRM.Repositories
             {
                 appDbContext.Entry(employeeToUpdate).CurrentValues.SetValues(employee);
                 await appDbContext.SaveChangesAsync();
+                return employeeToUpdate;
             }
-            return employeeToUpdate;
+
+            return null;
         }
     }
 }

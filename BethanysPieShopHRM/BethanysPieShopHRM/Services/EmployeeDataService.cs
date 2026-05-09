@@ -22,5 +22,20 @@ namespace BethanysPieShopHRM.Services
         {
             return await _employeeRepository.GetEmployeeDetailsByIdAsync(employeeId);
         }
+
+        public async Task<Employee> AddEmployeeAsync(Employee employee)
+        {
+            return await _employeeRepository.AddEmployeeAsync(employee);
+        }
+
+        public async Task<Employee> UpdateEmployeeAsync(Employee employee)
+        {
+            return await _employeeRepository.UpdateEmployeeAsync(employee);
+        }
+
+        public async Task DeleteEmployeeAsync(int employeeId)
+        {
+            await _employeeRepository.DeleteEmployeeAsync(employeeId);
+        } 
     }
 }
