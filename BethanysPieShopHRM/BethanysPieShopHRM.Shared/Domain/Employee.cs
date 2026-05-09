@@ -34,7 +34,6 @@ namespace BethanysPieShopHRM.Shared.Domain
 
         public bool IsOnHoliday { get; set; } = false;
 
-
         public string Comment { get; set; } = string.Empty;
 
         public DateTime? JoinedDate { get; set; }
@@ -50,7 +49,6 @@ namespace BethanysPieShopHRM.Shared.Domain
         public double? Longitude { get; set; }
 
         public List<TimeRegistration> TimeRegistrations { get; set; }
-
 
         [NotMapped]
         public byte[]? ImageContent { get; set; }
