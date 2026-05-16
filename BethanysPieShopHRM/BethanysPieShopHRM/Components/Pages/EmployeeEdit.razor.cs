@@ -47,7 +47,7 @@ namespace BethanysPieShopHRM.Components.Pages
             Countries = (await CountryDataService.GetAllCountries()).ToList();
             JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
 
-            Employee = await EmployeeDataService.GetEmployeeDetails(EmployeeId);
+            Employee = await EmployeeDataService.GetEmployeeDetailsByIdAsync(EmployeeId);
         }
 
         protected async Task HandleValidSubmit()
@@ -66,7 +66,7 @@ namespace BethanysPieShopHRM.Components.Pages
             }
 
 
-            await EmployeeDataService.UpdateEmployee(Employee);
+            await EmployeeDataService.UpdateEmployeeAsync(Employee);
 
             Saved = true;
             StatusClass = "alert-success";
@@ -83,7 +83,7 @@ namespace BethanysPieShopHRM.Components.Pages
         }
         protected async Task DeleteEmployee()
         {
-            await EmployeeDataService.DeleteEmployee(Employee.EmployeeId);
+            await EmployeeDataService.DeleteEmployeeAsync(Employee.EmployeeId);
 
             StatusClass = "alert-success";
             Message = "Deleted successfully";
