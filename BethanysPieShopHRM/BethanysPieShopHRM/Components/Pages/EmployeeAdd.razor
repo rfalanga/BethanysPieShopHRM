@@ -5,10 +5,9 @@
 @if (!IsSaved)
 {
     <EditForm Model="Employee" Enhance 
-        OnValidSubmit="@HandleValidSubmit"
-        OnInvalidSubmit="@HandleInvalidSubmit"
         FormName="AddEmployeeForm"
         method="post">
+
         <div class="row mb-3">
             <label for="lastName" class="col-form-label col-md-3">Last Name: </label>
             <div class="col-md-8">
@@ -36,6 +35,7 @@
         <div>
             <button type="submit" class="btn btn-outline-primary ms-1">Add Employee</button>
         </div>
+
     </EditForm>
 }
 else 

@@ -30,5 +30,6 @@ namespace BethanysPieShopHRM.Components.Pages
                 Message = $"Employee {Employee.FirstName} {Employee.LastName} was added successfully.";
             }
         }
+
     }
 }
