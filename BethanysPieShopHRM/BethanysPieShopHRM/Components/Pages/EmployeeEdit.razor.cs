@@ -53,7 +53,7 @@ namespace BethanysPieShopHRM.Components.Pages
         protected async Task HandleValidSubmit()
         {
 
-            if (selectedFile != null)//take first image
+            if (selectedFile != null) //take first image
             {
                 var file = selectedFile;
                 Stream stream = file.OpenReadStream();

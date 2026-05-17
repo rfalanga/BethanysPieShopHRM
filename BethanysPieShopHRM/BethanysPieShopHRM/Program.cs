@@ -31,6 +31,7 @@ builder.Services.AddScoped<IJobCategoryDataService, JobCategoryDataService>(); /
 
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();  // Register the CountryRepository as a scoped service, this step I tend to forget
 builder.Services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();  // Register the JobCategoryRepository as a scoped service, this step I tend to forget
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Register the IHttpContextAccessor as a singleton service, this step I tend to forget>
 
 var app = builder.Build();
 

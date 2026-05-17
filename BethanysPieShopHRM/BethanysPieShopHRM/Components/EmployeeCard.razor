@@ -6,7 +6,9 @@
             <h4>@Employee.FirstName @Employee.LastName</h4>
         </div>
         <div class="card-body employee-card text-center">
-            <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" class="employee-img rounded-circle img-fluid" />
+@*             <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" 
+                class="employee-img rounded-circle img-fluid" />*@
+             <img src="@Employee.ImageName" class="employee-img rounded-circle img-fluid" />
         </div>
         <a href="@($"employeedetail/{Employee.EmployeeId}")" class="btn btn-outline-primary btn-sm mb-1">
             Full details
