@@ -26,6 +26,13 @@ builder.Services.AddScoped<ITimeRegistrationRepository, TimeRegistrationReposito
 
 builder.Services.AddScoped<ITimeRegistrationDataService, TimeRegistrationDataService>(); // Register the TimeRegistrationDataService as a scoped service
 
+builder.Services.AddScoped<ICountryDataService, CountryDataService>(); // Register the CountryDataService as a scoped service, this step I tend to forget
+builder.Services.AddScoped<IJobCategoryDataService, JobCategoryDataService>(); // Register the JobCategoryDataService as a scoped service, this step I tend to forget
+
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();  // Register the CountryRepository as a scoped service, this step I tend to forget
+builder.Services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();  // Register the JobCategoryRepository as a scoped service, this step I tend to forget
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Register the IHttpContextAccessor as a singleton service, this step I tend to forget>
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

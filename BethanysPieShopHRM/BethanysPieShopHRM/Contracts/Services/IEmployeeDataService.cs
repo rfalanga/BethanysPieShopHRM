@@ -6,5 +6,8 @@ namespace BethanysPieShopHRM.Contracts.Services
     {
         Task<IEnumerable<Employee>> GetAllEmployeesAsync();
         Task<Employee> GetEmployeeDetailsByIdAsync(int employeeId); // I changed the name of this method to be more descriptive
+        Task<Employee> AddEmployeeAsync(Employee employee);
+        Task<Employee> UpdateEmployeeAsync(Employee employee);
+        Task DeleteEmployeeAsync(int employeeId);
     }
 }
