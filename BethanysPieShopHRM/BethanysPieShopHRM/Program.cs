@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+    .AddInteractiveServerComponents()
+    .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddDbContextFactory<AppDbContext>(
     options => options.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
