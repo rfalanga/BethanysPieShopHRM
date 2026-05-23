@@ -1,4 +1,5 @@
-﻿using BethanysPieShopHRM.Contracts.Services;
+﻿using BethanysPieShopHRM.Client;
+using BethanysPieShopHRM.Contracts.Services;
 using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
