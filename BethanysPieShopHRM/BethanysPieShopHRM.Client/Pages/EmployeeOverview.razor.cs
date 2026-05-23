@@ -1,7 +1,4 @@
-﻿using BethanysPieShopHRM.Contracts.Services;
-using BethanysPieShopHRM.Data;
-using BethanysPieShopHRM.Services;
-using BethanysPieShopHRM.Shared.Domain;
+﻿using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 
 namespace BethanysPieShopHRM.Client.Pages
