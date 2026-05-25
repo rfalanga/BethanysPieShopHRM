@@ -50,6 +50,13 @@ app.UseHttpsRedirection();
 app.UseAntiforgery();
 
 app.MapStaticAssets();
+
+app.MapGet("/api/employee", async (IEmployeeDataService employeeDataService) =>
+{
+    var employees = await employeeDataService.GetAllEmployeesAsync();
+    return Results.Ok(employees);
+});
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
