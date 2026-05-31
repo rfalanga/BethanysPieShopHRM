@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="BethanysPieShopHRM.Client/BethanysPieShopHRM.Client.csproj" />
   <Project Path="BethanysPieShopHRM.Shared/BethanysPieShopHRM.Shared.csproj" />
   <Project Path="BethanysPieShopHRM/BethanysPieShopHRM.csproj" />
 </Solution>
