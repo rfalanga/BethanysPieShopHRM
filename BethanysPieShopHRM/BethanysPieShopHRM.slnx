@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="BethanysPieShopHRM.Client/BethanysPieShopHRM.Client.csproj" />
+  <Project Path="BethanysPieShopHRM.ComponentsLibrary/BethanysPieShopHRM.ComponentsLibrary.csproj" Id="e3fbecab-186f-4268-8e83-478178093628" />
   <Project Path="BethanysPieShopHRM.Shared/BethanysPieShopHRM.Shared.csproj" />
   <Project Path="BethanysPieShopHRM/BethanysPieShopHRM.csproj" />
 </Solution>
