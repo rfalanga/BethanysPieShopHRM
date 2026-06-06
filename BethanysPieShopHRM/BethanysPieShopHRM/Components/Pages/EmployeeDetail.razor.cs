@@ -42,10 +42,13 @@ namespace BethanysPieShopHRM.Components.Pages
             itemsQueryable = (await TimeRegistrationDataService.GetTimeRegistrationsForEmployeeAsync(EmployeeId)).AsQueryable();
             queryableCount = itemsQueryable.Count();
 
-            MapMarkers = new List<Marker>
+            if (Employee.Longitude.HasValue && Employee.Latitude.HasValue)
             {
-                new Marker { Description = $"{Employee.FirstName} {Employee.LastName}", ShowPopup = false, X = Employee.Latitude.Value, Y = Employee.Longitude.Value }
-            };
+                MapMarkers = new List<Marker>
+                {
+                    new Marker { Description = $"{Employee.FirstName} {Employee.LastName}", ShowPopup = false, X = Employee.Latitude.Value, Y = Employee.Longitude.Value }
+                };
+            }
         }
 
         private void ChangeHolidayState()
