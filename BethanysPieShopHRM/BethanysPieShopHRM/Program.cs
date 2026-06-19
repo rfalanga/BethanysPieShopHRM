@@ -1,4 +1,3 @@
-//using BethanysPieShopHRM.Client;
 using BethanysPieShopHRM.Components;
 using BethanysPieShopHRM.Contracts.Repositories;
 using BethanysPieShopHRM.Contracts.Services;
@@ -9,7 +8,6 @@ using BethanysPieShopHRM.State;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-//using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity;
 
 var builder = WebApplication.CreateBuilder(args);
 
