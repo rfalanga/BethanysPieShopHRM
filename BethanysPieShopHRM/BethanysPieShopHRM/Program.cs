@@ -1,12 +1,13 @@
-using BethanysPieShopHRM.Client;
 using BethanysPieShopHRM.Components;
+using BethanysPieShopHRM.Components.Account;
 using BethanysPieShopHRM.Contracts.Repositories;
 using BethanysPieShopHRM.Contracts.Services;
 using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Repositories;
 using BethanysPieShopHRM.Services;
-using BethanysPieShopHRM.Shared.Domain;
 using BethanysPieShopHRM.State;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,30 @@ builder.Services.AddScoped<IJobCategoryDataService, JobCategoryDataService>(); /
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();  // Register the CountryRepository as a scoped service, this step I tend to forget
 builder.Services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();  // Register the JobCategoryRepository as a scoped service, this step I tend to forget
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Register the IHttpContextAccessor as a singleton service, this step I tend to forget>
+
+builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddScoped<IdentityRedirectManager>();
+builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddIdentityCore<ApplicationUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.Stores.SchemaVersion = IdentitySchemaVersions.Version3;
+})
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddSignInManager()
+    .AddDefaultTokenProviders();
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = IdentityConstants.ApplicationScheme;
+    options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+})
+    .AddIdentityCookies();
+
 
 var app = builder.Build();
 
