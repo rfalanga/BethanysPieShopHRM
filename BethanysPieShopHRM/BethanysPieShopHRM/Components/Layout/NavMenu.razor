@@ -1,4 +1,5 @@
-﻿<div class="sidebar bg-light">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+<div class="sidebar bg-light">
     <div class="pt-2 h-100">
         <ProfilePicture>
             <img class="img-fluid rounded-circle" src="images/profilePicture.jpg" />
@@ -8,18 +9,34 @@
             <NavLink class="list-group-item list-group-item-action bg-light" href="/" Match="NavLinkMatch.All">
                 Home
             </NavLink>
-            <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeoverview">
-                Employees
-            </NavLink>
-            <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeadd">
-                Add Employee
-            </NavLink>
-            <NavLink class="btn btn-outline-primary btn-sm mt-3" href="Account/Register">
-                Register
-            </NavLink>
-            <NavLink href="Account/Login" class="btn btn-outline-primary btn-sm mt-3">
-                Login
-            </NavLink>
+            <AuthorizeView>
+                <Authorized>
+                    <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeoverview">
+                        Employees
+                    </NavLink>
+                    <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeadd">
+                        Add Employee
+                    </NavLink>
+                    <NavLink class="list-group-item list-group-item-action bg-light" href="Account/Manage">
+                        Manage account
+                    </NavLink>
+                    <form action="Account/Logout" method="post">
+                        <AntiforgeryToken />
+                        <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                        <button type="submit" class="nav-link">
+                            <span class="bi bi-box-arrow-bar-left-nav-menu" aria-hidden="true"></span> Logout
+                        </button>
+                    </form>
+                </Authorized>
+                <NotAuthorized>
+                    <NavLink class="btn btn-outline-primary btn-sm mt-3" href="Account/Register">
+                        Register
+                    </NavLink>
+                    <NavLink href="Account/Login" class="btn btn-outline-primary btn-sm mt-3">
+                        Login
+                    </NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
         </div>
     </div>
 </div>
